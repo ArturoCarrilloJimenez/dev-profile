@@ -10,11 +10,12 @@ const projects = [
 	{
 		index: '01',
 		title: 'StyleHub',
-		chips: ['NEST.JS', 'ANGULAR', 'POSTGRES SQL', 'STIPE', 'TAILWIND', 'DAISY UI'],
+		chips: ['NEST.JS', 'ANGULAR', 'POSTGRESQL', 'TAILWIND', 'DAISY UI'],
 		role: 'Fullstack',
 		image: stylehub,
-		urlDeploy: 'https://www.wavemed.eu/en',
-		urlRepository: '',
+		urlDeploy: 'https://stylehub-bgor.onrender.com/products',
+		urlFront: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Front-Angular',
+		urlBack: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Backend-Nest',
 	},
 ];
 ---
@@ -30,8 +31,17 @@ const projects = [
 		</PageHeader>
 		<div class="flex flex-col gap-8 lg:gap-32">
 			{
-				projects.map(({ index, title, chips, role, image, urlDeploy: url }) => (
-					<ProjectCard index={index} projectTitle={title} chips={chips} image={image} role={role} urlDeploy={url} />
+				projects.map(({ index, title, chips, role, image, urlDeploy, urlBack, urlFront }) => (
+					<ProjectCard
+						index={index}
+						projectTitle={title}
+						chips={chips}
+						image={image}
+						role={role}
+						urlDeploy={urlDeploy}
+						urlFront={urlFront}
+						urlBack={urlBack}
+					/>
 				))
 			}
 		</div>

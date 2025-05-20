@@ -3,7 +3,6 @@ import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 import Chip from 'src/components/Chip.astro';
 import Link from 'src/components/Link.astro';
-import Table from 'src/components/Table.astro';
 import { cn } from 'src/utils';
 
 type Props = {
@@ -13,10 +12,19 @@ type Props = {
 	chips?: string[];
 	image?: ImageMetadata;
 	urlDeploy?: string;
-	urlRepository?: string;
+	urlFront?: string;
+	urlBack?: string;
 };
 
-const { index = '00', projectTitle = '', role = '', chips = [], image, urlDeploy: url = '#' } = Astro.props;
+const {
+	index = '00',
+	projectTitle = '',
+	chips = [],
+	image,
+	urlDeploy = '#',
+	urlBack = '#',
+	urlFront = '#',
+} = Astro.props;
 ---
 
 <div
@@ -43,34 +51,24 @@ const { index = '00', projectTitle = '', role = '', chips = [], image, urlDeploy
 						decoding="async"
 						loading="lazy"
 						fetchpriority="low"
-						class="object-cover object-left-top w-full aspect-[45/32]"
+						class="object-cover object-left-top w-full"
 					/>
 				)
 			}
 		</div>
-		<div class="flex flex-col gap-6 items-end">
-			<span class="absolute top-3 left-3 font-sans text-[64px] leading-[86px] lg:static lg:text-right">{index}</span>
-			<Table
-				className="hidden lg:table lg:min-w-[136px]"
-				title="PROJECT INFO"
-				items={[
-					{
-						label: 'Role',
-						value: role,
-					},
-				]}
-				variant="project"
-			/>
-		</div>
 	</div>
-	<div class="mt-3 flex flex-col gap-1 lg:mt-8">
-		<h3 class="text-[24px] leading-[32px] font-sans lg:text-[40px] lg:leading-[54px]">{projectTitle}</h3>
+	<div class="mt-3 flex flex-col gap-1 justify-between lg:mt-8">
+		<div class="flex justify-between gap-2 lg:flex-row lg:gap-8">
+			<h3 class="text-[24px] leading-[32px] font-sans lg:text-[40px] lg:leading-[54px]">{projectTitle}</h3>
+			<span class="font-sans text-[16px] leading-[24px] lg:text-[20px] lg:leading-[32px]">{index}</span>
+		</div>
 		<div class="flex flex-wrap gap-2">
 			{chips.map(text => <Chip text={text} variant="outlined" />)}
 		</div>
 	</div>
-	<div class="mt-3 flex mr-2 lg:mt-12">
-		<Link href={url} target={url !== '#' ? '_blank' : undefined}>Code</Link>
-		<Link href={url} target={url !== '#' ? '_blank' : undefined}>View</Link>
+	<div class="mt-3 flex flex-wrap mr-2 lg:mt-12">
+		<Link href={urlDeploy} target={urlDeploy !== '#' ? '_blank' : undefined}>View</Link>
+		<Link href={urlFront} target={urlFront !== '#' ? '_blank' : undefined}>Repo Front</Link>
+		<Link href={urlBack} target={urlBack !== '#' ? '_blank' : undefined}>Repo Back</Link>
 	</div>
 </div>
