@@ -1,0 +1,40 @@
+---
+import { cn } from 'src/utils';
+
+
+type Props = {
+  dupa?: string;
+  className?: string;
+  title?: string;
+  items?: {label: string; value: string;}[];
+  variant?: 'project'
+};
+
+const { title = "", items = [], className, variant } = Astro.props;
+---
+
+<table class={cn("w-full text-left font-sans uppercase", className)}>
+  <thead class="border-b border-border custom-transition">
+    <tr>
+      <th colspan="2" class={cn("font-normal text-[16px] leading-[22px] pb-1")}>{title}</th>
+    </tr>
+  </thead>
+  <tbody class="pt-3">
+    {items.map((item) => (
+      <tr class="w-full [&:first-child>*]:pt-[15.5px]">
+        <th class={cn(
+          "w-1/2 pt-1 pb-2 font-normal text-[12px] lg:text-[16px] lg:leading-[22px]",
+          variant==='project' && "lg:text-[10px] lg:leading-[13px]"
+        )}>
+          {item.label}
+        </th>
+        <td class={cn(
+          "w-1/2 pt-1 pb-2 text-[12px] leading-[16px] lg:text-[16px] lg:leading-[22px]",
+          variant==='project' && "lg:text-[10px] lg:leading-[13px]"
+        )}>
+          {item.value}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

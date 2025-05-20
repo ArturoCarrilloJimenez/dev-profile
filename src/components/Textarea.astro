@@ -1,0 +1,30 @@
+---
+import { cn } from 'src/utils';
+
+
+type Props =  {
+  label?: string;
+  id: string;
+  name?: string;
+  required?: boolean;
+  placeholder?: string;
+  autocomplete?: string;
+}
+
+const { label = "", id, name, required=false, placeholder="", autocomplete } = Astro.props;
+---
+
+<label for={id} class="flex flex-col w-full max-w-[390px]">
+  <span class="font-sans text-[10px] leading-[12px] uppercase ">{label}{required ? "*" : ""}</span>
+  <textarea
+    id={id}
+    rows={5}
+    name={name ? name : id}
+    required={required}
+    placeholder={placeholder}
+    autocomplete={autocomplete}
+    class={cn(
+      "bg-transparent border-b border-border focus:border-primary outline-none py-1 resize-y min-h-[104px] max-h-[142px]",
+      "text-[16px] leading-[19px] text-primary placeholder:text-border"
+    )}/>
+</label>

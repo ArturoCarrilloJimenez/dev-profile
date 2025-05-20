@@ -1,0 +1,11 @@
+{
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.formatOnSave": true,
+	"[astro]": {
+		"editor.defaultFormatter": "astro-build.astro-vscode"
+	}
+}

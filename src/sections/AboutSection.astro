@@ -1,0 +1,39 @@
+---
+import PageHeader from "src/components/PageHeader.astro"
+import Table from "src/components/Table.astro"
+
+const chipText = "MORE ABOUT Arturo Carrillo Jimenez";
+const pageTitle = "What do I specialize in as a Web Developer?";
+const tableTitle = "FAVOURITE STACK & TOOLS";
+const tableItems = [{
+  label: "Language",
+  value: "TypeScript"
+},{
+  label: "Framework",
+  value: "React",
+},{
+  label: "Styling",
+  value: "TailwindCSS",
+},{
+  label: "Runtime Environment",
+  value: "Node.js",
+},{
+  label: "Building Tool",
+  value: "Vite.js",
+},{
+  label: "Package Manager",
+  value: "PNPM",
+}, {
+  label: "Git Repository",
+  value: "Gitlab"
+}]
+---
+
+<section id="about" class="contentSection">
+  <div class="flex flex-col gap-12">
+    <PageHeader title={pageTitle} chipText={chipText}>
+      <p slot="description">As a web developer, my favorite technology is React supported by TypeScript, but I’m comfortable working with a wide range of technologies to deliver the best solutions tailored to each project.</p>
+    </PageHeader>
+    <Table title={tableTitle} items={tableItems} />
+  </div>
+</section>

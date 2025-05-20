@@ -1,0 +1,39 @@
+---
+import PageHeader from 'src/components/PageHeader.astro';
+import ProjectCard from 'src/components/ProjectCard.astro';
+import stylehub from 'src/assets/stylehub.png';
+
+const chipText = 'PROYECTOS';
+const pageTitle = 'PROYECTOS DESTACADOS';
+
+const projects = [
+	{
+		index: '01',
+		title: 'StyleHub',
+		chips: ['NEST.JS', 'ANGULAR', 'POSTGRES SQL', 'STIPE', 'TAILWIND', 'DAISY UI'],
+		role: 'Fullstack',
+		image: stylehub,
+		urlDeploy: 'https://www.wavemed.eu/en',
+		urlRepository: '',
+	},
+];
+---
+
+<section id="projects" class="contentSection">
+	<div class="flex flex-col gap-12">
+		<PageHeader title={pageTitle} chipText={chipText}>
+			<p slot="description">
+				Estos son algunos de mis proyectos que reflejan mi compromiso con la calidad, la eficiencia y la innovación
+				tecnológica. Cada uno de ellos ha sido una oportunidad para aplicar y perfeccionar mis habilidades en el
+				desarrollo full stack, contribuyendo a soluciones que generan valor real.
+			</p>
+		</PageHeader>
+		<div class="flex flex-col gap-8 lg:gap-32">
+			{
+				projects.map(({ index, title, chips, role, image, urlDeploy: url }) => (
+					<ProjectCard index={index} projectTitle={title} chips={chips} image={image} role={role} urlDeploy={url} />
+				))
+			}
+		</div>
+	</div>
+</section>

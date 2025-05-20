@@ -1,0 +1,18 @@
+{
+	"extends": "astro/tsconfigs/base",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"types": ["./src/globals.d.ts", "@types/gtag.js"],
+		"verbatimModuleSyntax": true,
+		"plugins": [
+			{
+				"name": "@astrojs/ts-plugin"
+			}
+		],
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+		"strictNullChecks": true,
+		"allowJs": true,
+		"skipLibCheck": true
+	}
+}

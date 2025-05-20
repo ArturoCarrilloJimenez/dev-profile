@@ -1,0 +1,18 @@
+---
+import ChipsGroup from "src/components/ChipsGroup.astro";
+
+type Props = {
+  technologies?: {
+    title: string;
+    items: string[];
+  }[];
+}
+
+const {technologies = []} = Astro.props;
+---
+
+<div class="flex flex-col gap-9">
+  {technologies.map(({title, items})=>(
+    <ChipsGroup title={title} items={items} />
+  ))}
+</div>

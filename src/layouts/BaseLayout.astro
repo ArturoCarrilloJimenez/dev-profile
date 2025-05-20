@@ -1,0 +1,42 @@
+---
+import "../styles/index.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  author?: string;
+};
+
+const {
+  title = "Arturo Carrillo | Full Stack Web Developer",
+  description="Portfolio de Arturo Carrillo, full stack web developer and responsive. Explora mis proyectos y habilidades en desarrollo web.",
+  author = "Arturo Carrillo",
+} = Astro.props;
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<title>{title}</title>
+    <meta name="description" content={description}>
+    <meta name="author" content={author}>
+    <script is:inline>
+      var isDarkMode = function() {
+        return localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      }
+      var initTheme = function(){
+        if (isDarkMode()) {
+          document.documentElement.setAttribute('data-theme-dark', "")
+        } else {
+          document.documentElement.removeAttribute('data-theme-dark')
+        }
+      }
+      initTheme();
+    </script>
+	</head>
+	<body>
+    <slot/>
+	</body>
+</html>

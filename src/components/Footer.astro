@@ -1,0 +1,19 @@
+---
+import CrossesFooter from "src/components/CrossesFooter.astro";
+
+const today = new Date();
+const currentYear = today.getFullYear();
+---
+
+<footer class="lg:pl-[30%] lg:pb-12">
+  <div class="flex flex-col gap-9 lg:flex-row-reverse lg:justify-between lg:items-end">
+    <div class="px-3 lg:px-12 lg:max-w-[46vw] flex flex-col gap-4">
+      <small class="font-sans text-[12px] leading-[16px] uppercase lg:text-right lg:text-[16px]">MADE IN POLAND</small>
+      <small class="font-sans text-[12px] leading-[16px] uppercase lg:text-right lg:text-[16px]">COPYRIGHTS &copy; {currentYear}</small>
+      <small class="font-sans text-[12px] leading-[16px] uppercase lg:text-right lg:text-[16px]">DESIGNED & DEVELOPED BY Arturo Carrillo Jimenez</small>
+    </div>
+    <div class="p-[10px] lg:pl-10 lg:pb-0">
+      <CrossesFooter />
+    </div>
+  </div>
+</footer>
