@@ -1,0 +1,68 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+type Props = {
+	images?: ImageMetadata[];
+	projectName?: string;
+};
+
+// props opcionales si quieres reutilizarlo
+const { images = [], projectName = '' } = Astro.props;
+---
+
+<div class="relative w-full overflow-hidden">
+	<div id="carousel" class="flex transition-transform duration-500 ease-in-out" style="transform: translateX(0%)">
+		{
+			images.map((src, index) => (
+				<Image
+					src={src}
+					alt={`Arturo Carrillo Project - ${projectName ?? index}`}
+					widths={[360, 720, 1440]}
+					format="webp"
+					decoding="async"
+					loading="lazy"
+					fetchpriority="low"
+					class="w-full h-full object-cover object-center"
+				/>
+			))
+		}
+	</div>
+
+	<!-- Botones de navegación -->
+	<button
+		id="prev"
+		class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black"
+	>
+		◀
+	</button>
+	<button
+		id="next"
+		class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black"
+	>
+		▶
+	</button>
+
+	<script type="module" is:inline>
+		const carousel = document.getElementById('carousel');
+		const prevBtn = document.getElementById('prev');
+		const nextBtn = document.getElementById('next');
+
+		let currentIndex = 0;
+		const totalImages = carousel.children.length;
+
+		function updateCarousel() {
+			carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+		}
+
+		prevBtn.addEventListener('click', () => {
+			currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+			updateCarousel();
+		});
+
+		nextBtn.addEventListener('click', () => {
+			currentIndex = (currentIndex + 1) % totalImages;
+			updateCarousel();
+		});
+	</script>
+</div>

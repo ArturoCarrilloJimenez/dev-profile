@@ -1,7 +1,13 @@
 ---
 import PageHeader from 'src/components/PageHeader.astro';
 import ProjectCard from 'src/components/ProjectCard.astro';
-import stylehub from 'src/assets/stylehub.png';
+
+import stylehubHome from 'src/assets/stylehub/home.png';
+import stylehubProducts from 'src/assets/stylehub/products.png';
+import stylehubProductDetail from 'src/assets/stylehub/detailProduct.png';
+import stylehubProductCart from 'src/assets/stylehub/productsCart.png';
+import stylehubStripe from 'src/assets/stylehub/stripe.png';
+import stylehubAdminPanel from 'src/assets/stylehub/admin-panel.png';
 
 const chipText = 'PROYECTOS';
 const pageTitle = 'PROYECTOS DESTACADOS';
@@ -10,12 +16,21 @@ const projects = [
 	{
 		index: '01',
 		title: 'StyleHub',
-		chips: ['NEST.JS', 'ANGULAR', 'POSTGRESQL', 'TAILWIND', 'DAISY UI'],
+		chips: ['NEST.JS', 'ANGULAR', 'POSTGRESQL', 'TAILWIND', 'DAISY UI', 'GITHUB ACTION', 'DOCKER'],
 		role: 'Fullstack',
-		image: stylehub,
-		urlDeploy: 'https://stylehub-bgor.onrender.com/products',
-		urlFront: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Front-Angular',
-		urlBack: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Backend-Nest',
+		images: [
+			stylehubHome,
+			stylehubProducts,
+			stylehubProductDetail,
+			stylehubProductCart,
+			stylehubStripe,
+			stylehubAdminPanel,
+		],
+		urls: [
+			{ name: 'VIEW', url: 'https://stylehub-bgor.onrender.com/products' },
+			{ name: 'FRONT', url: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Front-Angular' },
+			{ name: 'BACK', url: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Backend-Nest' },
+		],
 	},
 ];
 ---
@@ -31,17 +46,8 @@ const projects = [
 		</PageHeader>
 		<div class="flex flex-col gap-8 lg:gap-32">
 			{
-				projects.map(({ index, title, chips, role, image, urlDeploy, urlBack, urlFront }) => (
-					<ProjectCard
-						index={index}
-						projectTitle={title}
-						chips={chips}
-						image={image}
-						role={role}
-						urlDeploy={urlDeploy}
-						urlFront={urlFront}
-						urlBack={urlBack}
-					/>
+				projects.map(({ index, title, chips, role, images, urls }) => (
+					<ProjectCard index={index} projectTitle={title} chips={chips} images={images} role={role} urls={urls} />
 				))
 			}
 		</div>

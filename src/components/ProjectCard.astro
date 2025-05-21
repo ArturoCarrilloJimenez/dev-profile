@@ -1,30 +1,25 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
 import Chip from 'src/components/Chip.astro';
 import Link from 'src/components/Link.astro';
 import { cn } from 'src/utils';
+import Carousel from './Carousel.astro';
 
 type Props = {
 	index?: string;
 	projectTitle?: string;
 	role?: string;
 	chips?: string[];
-	image?: ImageMetadata;
-	urlDeploy?: string;
-	urlFront?: string;
-	urlBack?: string;
+	images?: ImageMetadata[];
+	urls?: UrlButton[];
 };
 
-const {
-	index = '00',
-	projectTitle = '',
-	chips = [],
-	image,
-	urlDeploy = '#',
-	urlBack = '#',
-	urlFront = '#',
-} = Astro.props;
+type UrlButton = {
+	name: string;
+	url: string;
+};
+
+const { index = '00', projectTitle = '', chips = [], images, urls = [] } = Astro.props;
 ---
 
 <div
@@ -41,20 +36,7 @@ const {
 				"before:absolute before:inset-0 before:content-[''] before:bg-black before:opacity-20 lg:before:bg-[unset]",
 			)}
 		>
-			{
-				image && (
-					<Image
-						src={image}
-						alt={`Arturo Carrillo Project - ${projectTitle}`}
-						widths={[360, 720, 1440]}
-						format="webp"
-						decoding="async"
-						loading="lazy"
-						fetchpriority="low"
-						class="object-cover object-left-top w-full"
-					/>
-				)
-			}
+			{images && <Carousel images={images} />}
 		</div>
 	</div>
 	<div class="mt-3 flex flex-col gap-1 justify-between lg:mt-8">
@@ -67,8 +49,12 @@ const {
 		</div>
 	</div>
 	<div class="mt-3 flex flex-wrap mr-2 lg:mt-12">
-		<Link href={urlDeploy} target={urlDeploy !== '#' ? '_blank' : undefined}>View</Link>
-		<Link href={urlFront} target={urlFront !== '#' ? '_blank' : undefined}>Repo Front</Link>
-		<Link href={urlBack} target={urlBack !== '#' ? '_blank' : undefined}>Repo Back</Link>
+		{
+			urls.map(url => (
+				<Link href={url.url} target={url.name !== '#' ? '_blank' : undefined}>
+					{url.name}
+				</Link>
+			))
+		}
 	</div>
 </div>
