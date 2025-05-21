@@ -1,58 +1,52 @@
 ---
-import PageHeader from "src/components/PageHeader.astro";
-import ShiningStar from "src/components/ShiningStar.astro";
-import TechnologyLists from "src/components/TechnologyLists.astro";
+// Importación de componentes reutilizables
+import PageHeader from 'src/components/PageHeader.astro';
+import ShiningStar from 'src/components/ShiningStar.astro';
+import TechnologyLists from 'src/components/TechnologyLists.astro';
 
-const chipText = "SKILLS & KNOWLEDGE"
-const pageTitle = "Known technologies"
+// Variables para el encabezado
+const chipText = 'Skills & Knowledge';
+const pageTitle = 'Tecnologías dominadas';
+
+// Lista de tecnologías agrupadas por categoría
 const technologies = [
-  {
-    title: "LANGUAGES",
-    items: ["JAVASCRIPT", "TYPESCRIPT", "PYTHON", "C++", "BASH"]
-  },
-  {
-    title: "FRAMEWORKS",
-    items: ["REACT", "SVELTE", "NEXT.JS", "ASTRO", "REMIX", "VUE", "PREACT", "SOLID", "NUXT.JS"]
-  },
-  {
-    title: "STYLING",
-    items: ["SASS/SCSS", "TAILWINDCSS", "SHADCN/UI", "SHOPIFY POLARIS", "STYLED-COMPONENTS", "EMOTION", "MUI", "ANTDESIGN", "SEMANTIC UI"]
-  },
-  {
-    title: "FRONTEND TOOLS",
-    items: ["VITE.JS", "WEBPACK", "ESLINT", "PRETTIER", "NVM", "TURBOPACK", "ROLLUP.JS", "GULP.JS", "ESBUILD", "BABEL", "SWC", "POSTCSS", "GRAPHQL-CODEGEN", "PNPM", "NPM", "NGROK"]
-  },
-  {
-    title: "DEVOPS",
-    items: ["DOCKER", "GITLAB CI", "NGINX", "CADDY", "LET’S ENCRYPT", "GITHUB PAGES", "DIGITALOCEAN", "OVH", "VERCEL", "NETLIFY"]
-  },
-  {
-    title: "TESTING",
-    items: ["VITEST", "PLAYWRIGHT", "JEST", "CHAI"]
-  },
-  {
-    title: "BACKEND",
-    items: ["NODE.JS", "POSTGRESQL", "SQLITE", "PRISMA"]
-  },
-  {
-    title: "OTHER",
-    items: ["GIT", "GITLAB", "GITHUB", "REST API", "GRAPHQL", "GITHUB COPILOT"]
-  },
-]
+	{
+		title: 'Lenguajes y Frameworks',
+		items: ['JavaScript', 'TypeScript', 'Angular', 'NestJS', 'Express'],
+	},
+	{
+		title: 'Estilos',
+		items: ['Sass/SCSS', 'TailwindCSS', 'Bootstrap', 'DaisyUI'],
+	},
+	{
+		title: 'DevOps',
+		items: ['Docker', 'GitHub Actions'],
+	},
+	{
+		title: 'Otros',
+		items: ['PostgreSQL', 'SQL', 'Git', 'REST API'],
+	},
+];
 ---
 
 <section id="technologies" class="relative overflow-hidden">
-  <div class="contentSection">
-    <div class="flex flex-col gap-12">
-      <PageHeader title={pageTitle} chipText={chipText}>
-        <p slot="description">This is a quick overview of the technologies I, Arturo Carrillo — web developer, am proficient in. These skills empower me to build high-quality, scalable web applications tailored to diverse project needs.</p>
-      </PageHeader>
-      <TechnologyLists technologies={technologies}/>
-    </div>
-  </div>
-    <div class="absolute right-[-70px] bottom-0 lg:right-[3%] xl:right-[18%]">
-      <div class="w-[140px] h-[140px] lg:w-[308px] lg:h-[308px]">
-      <ShiningStar />
-    </div>
-  </div>
+	<div class="contentSection">
+		<div class="flex flex-col gap-12">
+			<PageHeader title={pageTitle} chipText={chipText}>
+				<p slot="description">
+					Esta sección muestra las herramientas y tecnologías que utilizo para crear soluciones web eficientes y
+					modernas.
+				</p>
+			</PageHeader>
+
+			<TechnologyLists technologies={technologies} />
+		</div>
+	</div>
+
+	<!-- Decoración visual -->
+	<div class="absolute right-[-70px] bottom-0 lg:right-[3%] xl:right-[18%]">
+		<div class="w-[140px] h-[140px] lg:w-[308px] lg:h-[308px]">
+			<ShiningStar />
+		</div>
+	</div>
 </section>
