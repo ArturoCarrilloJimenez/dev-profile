@@ -8,14 +8,17 @@ type Props = {
 	title?: string;
 	chips?: string[];
 	image?: ImageMetadata;
+	url?: string;
 };
 
-const { title: projectTitle = '', chips = [], image } = Astro.props;
+const { title: projectTitle = '', chips = [], image, url } = Astro.props;
 ---
 
-<div
+<a
+	href={url}
+	target="_blank"
 	class={cn(
-		'w-full p-3 bg-secondary-alt rounded-2xl lg:p-8 custom-transtion',
+		'w-full p-1 bg-secondary-alt rounded-2xl lg:p-2 custom-transtion group-hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-in-out',
 		"after:absolute after:content-[''] after:w-[80%] after:h-[1px] after:bg-border after:right-0 after:translate-y-[28px] last:after:hidden",
 		'lg:after:translate-y-[96px] lg:after:w-1/2',
 	)}
@@ -43,12 +46,10 @@ const { title: projectTitle = '', chips = [], image } = Astro.props;
 			}
 		</div>
 	</div>
-	<div class="mt-3 flex flex-col gap-1 justify-between lg:mt-8">
-		<div class="flex justify-between gap-2 lg:flex-row lg:gap-8">
-			<h3 class="text-[24px] leading-[32px] font-sans lg:text-[40px] lg:leading-[54px]">{projectTitle}</h3>
-		</div>
+	<div class="mt-2 flex flex-col gap-1 justify-between lg:mt-8">
+		<h3 class="text-[20px] leading-[32px] font-sans">{projectTitle}</h3>
 		<div class="flex flex-wrap gap-2">
 			{chips.map(text => <Chip text={text} variant="outlined" />)}
 		</div>
 	</div>
-</div>
+</a>

@@ -3,21 +3,6 @@ import { cn } from 'src/utils';
 import { useClickAway } from '@uidotdev/usehooks';
 import DarkModeSwitch from 'src/components/DarkModeSwitch';
 
-function Logo() {
-	return (
-		<svg height="100%" viewBox="0 0 49 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path
-				d="M33.1349 0.226318L48.4905 15.5481V23.7735H41.3245V18.505L30.1716 7.37647H27.8548V23.7735H20.6889V0.226318H33.1349Z"
-				fill="currentColor"
-			/>
-			<path
-				d="M12.446 0.226318L27.8016 15.5481V23.7735H20.6356V18.505L9.48273 7.37647H7.16592V23.7735H0V0.226318H12.446Z"
-				fill="currentColor"
-			/>
-		</svg>
-	);
-}
-
 function IconBurger() {
 	return (
 		<svg width="100%" height="100%" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +93,7 @@ export default function Header() {
 									<a
 										href="/#home"
 										onClick={onMenuClick}
-										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition"
+										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition hover:bg-secondary"
 									>
 										HOME
 									</a>
@@ -117,7 +102,7 @@ export default function Header() {
 									<a
 										href="/#projects"
 										onClick={onMenuClick}
-										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition"
+										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition hover:bg-secondary"
 									>
 										PORTFOLIO
 									</a>
@@ -126,7 +111,7 @@ export default function Header() {
 									<a
 										href="/#about"
 										onClick={onMenuClick}
-										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition"
+										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition hover:bg-secondary"
 									>
 										ABOUT
 									</a>
@@ -135,7 +120,7 @@ export default function Header() {
 									<a
 										href="/#technologies"
 										onClick={onMenuClick}
-										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition"
+										className="block w-fit uppercase font-sans text-base leading-[22px] bg-secondary-alt px-2 pt-3 pb-1.5 rounded custom-transition hover:bg-secondary  "
 									>
 										SKILLS
 									</a>
@@ -148,7 +133,7 @@ export default function Header() {
 									href="https://www.linkedin.com/in/arturo-carrillo-jimenez/"
 									target="_blank"
 									rel="noopener"
-									className="block w-8 h-8"
+									className="block w-8 h-8 hover:text-gray-50"
 								>
 									<IconLinkedin />
 								</a>

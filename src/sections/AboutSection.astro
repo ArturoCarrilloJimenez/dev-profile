@@ -35,7 +35,7 @@ const formacion = [
 	{
 		title: 'Ciclo formativo superior de Desarrollo Web',
 		description:
-			'Durante mi formación como Técnico Superior en Desarrollo de Aplicaciones Web, adquirí una sólida base en tecnologías clave del desarrollo web moderno. Me especialicé en bases de datos relacionales y no relacionales, trabajando con MySQL, PostgreSQL y MongoDB, y aplicando principios de diseño de bases de datos. En programación, profundicé en Java y la programación orientada a objetos, culminando en un proyecto con JSP y MySQL. También desarrollé habilidades en HTML, CSS y JavaScript/TypeScript para crear interfaces web dinámicas, y utilicé herramientas como GitHub y DockerHub para el control de versiones y despliegue. Además, trabajé con frameworks como Angular, FastAPI y Express para el desarrollo full stack. ',
+			'Estuve trabajando con tecnologías con MySQL, PostgreSQL, MongoDB, Java y la programación orientada a objetos.Ademas utilicé herramientas como GitHub y DockerHub para el control de versiones y despliegue. Por ultimo, trabajé con frameworks como Angular, FastAPI y Express para el desarrollo full stack. ',
 		company: 'IES Celia Viñas Almería',
 		dateInit: new Date(Date.parse('2023-09-2')),
 		dateEnd: new Date(Date.parse('2025-06-2')),
@@ -53,18 +53,18 @@ const formacion = [
 const cursos = [
 	{
 		title: 'Angular',
-		chips: ['Angular', 'Módulos de angular', 'standalone', 'frontend'],
 		image: cursoBasicoAngular,
+		url: 'https://www.udemy.com/course/angular-fernando-herrera/',
 	},
 	{
 		title: 'NestJs',
-		chips: ['NestJs', 'PosgreSql', 'Api Rest', 'Backend'],
 		image: cursoBasicoNest,
+		url: 'https://www.udemy.com/course/nest-framework/',
 	},
 	{
 		title: 'Clean Code y Principios solid',
-		chips: ['Clean code', 'principios Solid'],
 		image: cursoClinCodeySolid,
+		url: 'https://www.udemy.com/course/solid-clean/',
 	},
 ];
 ---
@@ -81,7 +81,7 @@ const cursos = [
 		<ExperienceTimeline experience={formacion} title="Formación" />
 		<h2 class="text-2xl lg:text-4xl">Cursos</h2>
 		<div class="grid md:grid-cols-2 gap-4">
-			{cursos.map(({ title, chips, image }) => <CursosCard title={title} chips={chips} image={image} />)}
+			{cursos.map(({ title, image, url, chips }) => <CursosCard title={title} image={image} url={url} chips={chips} />)}
 		</div>
 	</div>
 </section>
