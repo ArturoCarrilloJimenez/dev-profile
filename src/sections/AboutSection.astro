@@ -81,7 +81,7 @@ const cursos = [
 		<ExperienceTimeline experience={formacion} title="Formación" />
 		<h2 class="text-2xl lg:text-4xl">Cursos</h2>
 		<div class="grid md:grid-cols-2 gap-4">
-			{cursos.map(({ title, image, url, chips }) => <CursosCard title={title} image={image} url={url} chips={chips} />)}
+			{cursos.map(({ title, image, url }) => <CursosCard title={title} image={image} url={url} />)}
 		</div>
 	</div>
 </section>
