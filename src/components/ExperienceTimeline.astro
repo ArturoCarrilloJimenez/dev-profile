@@ -1,0 +1,21 @@
+---
+import ExperienceCard from './ExperienceCard.astro';
+
+const { experience = [], title } = Astro.props;
+---
+
+<h2 class="text-2xl lg:text-4xl">{title}</h2>
+<ol class="relative border-s border-gray-200 ml-4">
+	{
+		experience.map(({ title, description, company, dateInit, dateEnd, clips }) => (
+			<ExperienceCard
+				title={title}
+				description={description}
+				company={company}
+				dateInit={dateInit}
+				dateEnd={dateEnd}
+				chips={clips}
+			/>
+		))
+	}
+</ol>

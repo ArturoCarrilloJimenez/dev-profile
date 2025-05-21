@@ -1,0 +1,60 @@
+---
+import Chip from 'src/components/Chip.astro';
+
+type Props = {
+	title?: string;
+	company?: string;
+	description?: string;
+	dateInit?: Date;
+	dateEnd?: Date;
+	chips?: string[];
+};
+
+const { title = '', description = '', company = '', dateInit, dateEnd, chips = [] } = Astro.props;
+
+// Función para formatear la fecha como "Abril 2022"
+const formatDate = (date: Date | undefined) => {
+	if (!date) return '';
+	return date.toLocaleDateString('es-ES', {
+		month: 'long',
+		year: 'numeric',
+	});
+};
+
+const dataInitFormat = formatDate(dateInit);
+const dataEndFormat = formatDate(dateEnd);
+---
+
+<li class="relative mb-12 ps-6 group">
+	<!-- Punto circular del timeline -->
+	<span
+		class="absolute flex items-center justify-center w-4 h-4 rounded-full -start-2 top-2 bg-secondary-alt ring-4 ring-secondary"
+	></span>
+
+	<!-- Card principal -->
+	<div
+		class="ms-6 p-5 bg-secondary-alt rounded-xl border border-secondary shadow-sm group-hover:shadow-lg group-hover:scale-[1.02] transition-all duration-300 ease-in-out"
+	>
+		<!-- Fecha -->
+		{
+			dataInitFormat && (
+				<time class="block mb-1 text-sm font-medium text-muted">
+					{dataInitFormat} – {dataEndFormat ?? 'Actualidad'}
+				</time>
+			)
+		}
+
+		<!-- Título del puesto o estudio -->
+		{title && <h3 class="text-lg text-primary mb-0.5">{title}</h3>}
+
+		<!-- Empresa o institución -->
+		{company && <p class="text-base font-medium text-muted mb-2">{company}</p>}
+
+		<!-- Descripción -->
+		{description && <p class="text-sm text-gray-400 leading-relaxed">{description}</p>}
+
+		<div class="flex flex-wrap gap-2 mt-2">
+			{chips.map(text => <Chip text={text} variant="outlined" />)}
+		</div>
+	</div>
+</li>

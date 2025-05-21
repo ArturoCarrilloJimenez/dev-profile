@@ -1,37 +1,47 @@
 ---
+import ExperienceTimeline from 'src/components/ExperienceTimeline.astro';
 import PageHeader from 'src/components/PageHeader.astro';
 
 const chipText = 'MORE ABOUT Arturo Carrillo Jimenez';
-const pageTitle = 'What do I specialize in as a Web Developer?';
-const tableTitle = 'FAVOURITE STACK & TOOLS';
-const tableItems = [
+const pageTitle = 'Experiencia y Formación';
+
+const experience = [
 	{
-		label: 'Language',
-		value: 'TypeScript',
+		title: 'Becario en desarrollo de software',
+		description:
+			'Durante mi experiencia en Viewnext he tenido la oportunidad de trabajar en un entorno profesional que me ha permitido fortalecer mis habilidades técnicas y colaborar en proyectos innovadores. En este periodo, me enfoqué en el desarrollo de StyleHub, una plataforma de comercio electrónico asignada como proyecto formativo, utilizando tecnologías como Angular y NestJS. Además, participé en la creación de un agente de inteligencia artificial destinado a optimizar el acceso a la información interdepartmental, mejorando la eficiencia en la búsqueda de datos. Estas experiencias me han proporcionado una visión integral del desarrollo de soluciones tecnológicas y la importancia del trabajo en equipo en entornos colaborativos.',
+		company: 'Viewnext Almería',
+		dateInit: new Date(Date.parse('2025-03-2')),
+		dateEnd: new Date(Date.parse('2025-06-2')),
+		clips: ['Trabajo en equipo', 'nestjs', 'angular', 'git', 'tailwind'],
 	},
 	{
-		label: 'Framework',
-		value: 'React',
+		title: 'Becario en formación',
+		description:
+			'Durante el primer año de mis estudios de Formación Profesional Superior en Desarrollo de Aplicaciones Web, realicé un período de prácticas duales en el que me enfoqué en el desarrollo Full Stack utilizando Laravel y Vue.js. Durante este tiempo, completé cursos especializados en estas tecnologías y desarrollé de forma autónoma un proyecto completo, aplicando los conocimientos adquiridos tanto en el backend como en el frontend. Esta experiencia fortaleció mis habilidades técnicas y me proporcionó una comprensión práctica del ciclo completo de desarrollo de aplicaciones web modernas.',
+		company: 'Alborada IT Software Almería',
+		dateInit: new Date(Date.parse('2024-05-2')),
+		dateEnd: new Date(Date.parse('2024-06-2')),
+		clips: ['Trabajo autónomo', 'teletrabajo', 'laravel', 'vue', 'git', 'bootstrap'],
+	},
+];
+
+const formacion = [
+	{
+		title: 'Ciclo formativo superior de Desarrollo Web',
+		description:
+			'Durante mi formación como Técnico Superior en Desarrollo de Aplicaciones Web, adquirí una sólida base en tecnologías clave del desarrollo web moderno. Me especialicé en bases de datos relacionales y no relacionales, trabajando con MySQL, PostgreSQL y MongoDB, y aplicando principios de diseño de bases de datos. En programación, profundicé en Java y la programación orientada a objetos, culminando en un proyecto con JSP y MySQL. También desarrollé habilidades en HTML, CSS y JavaScript/TypeScript para crear interfaces web dinámicas, y utilicé herramientas como GitHub y DockerHub para el control de versiones y despliegue. Además, trabajé con frameworks como Angular, FastAPI y Express para el desarrollo full stack. ',
+		company: 'IES Celia Viñas Almería',
+		dateInit: new Date(Date.parse('2023-09-2')),
+		dateEnd: new Date(Date.parse('2025-06-2')),
+		clips: ['Desarrollo web', 'java', 'sql', 'git', 'github actions'],
 	},
 	{
-		label: 'Styling',
-		value: 'TailwindCSS',
-	},
-	{
-		label: 'Runtime Environment',
-		value: 'Node.js',
-	},
-	{
-		label: 'Building Tool',
-		value: 'Vite.js',
-	},
-	{
-		label: 'Package Manager',
-		value: 'PNPM',
-	},
-	{
-		label: 'Git Repository',
-		value: 'Gitlab',
+		title: 'Ciclo formativo medio de Sistemas Microinformáticos y Redes',
+		company: 'IES Sierra Nevada Fiñana (Almería)',
+		dateInit: new Date(Date.parse('2023-09-2')),
+		dateEnd: new Date(Date.parse('2025-06-2')),
+		clips: ['sapote técnico', 'css', 'html', 'ubuntu'],
 	},
 ];
 ---
@@ -40,9 +50,11 @@ const tableItems = [
 	<div class="flex flex-col gap-12">
 		<PageHeader title={pageTitle} chipText={chipText}>
 			<p slot="description">
-				As a web developer, my favorite technology is React supported by TypeScript, but I’m comfortable working with a
-				wide range of technologies to deliver the best solutions tailored to each project.
+				A lo largo de mi desarrollo profesional, he participado en diversos programas de formación y experiencia
+				profesional que han reforzado mis competencias técnicas y prácticas.
 			</p>
 		</PageHeader>
+		<ExperienceTimeline experience={experience} title="Experiencia" />
+		<ExperienceTimeline experience={formacion} title="Formación" />
 	</div>
 </section>
