@@ -36,7 +36,7 @@ const { projectTitle = 'Proyecto', chips = [], urls = [], description = '' } = A
 	</ModalHeader>
 
 	<ModalBody class="space-y-4">
-		{description && <p class="text-gray-400 leading-relaxed" set:html={description} />}
+		{description && <p class="font-sans leading-relaxed font-extralight dark:text-gray-200" set:html={description} />}
 
 		{
 			chips.length > 0 && (
