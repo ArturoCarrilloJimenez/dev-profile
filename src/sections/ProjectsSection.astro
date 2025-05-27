@@ -31,6 +31,7 @@ const projects = [
 			{ name: 'FRONT', url: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Front-Angular' },
 			{ name: 'BACK', url: 'https://github.com/ArturoCarrilloJimenez/StyleHub-Backend-Nest' },
 		],
+		description: 'Prueba',
 	},
 ];
 ---
@@ -46,8 +47,15 @@ const projects = [
 		</PageHeader>
 		<div class="flex flex-col gap-8 lg:gap-32">
 			{
-				projects.map(({ index, title, chips, role, images, urls }) => (
-					<ProjectCard index={index} projectTitle={title} chips={chips} images={images} role={role} urls={urls} />
+				projects.map(({ index, title, chips, description, images, urls }) => (
+					<ProjectCard
+						index={index}
+						projectTitle={title}
+						chips={chips}
+						images={images}
+						urls={urls}
+						description={description}
+					/>
 				))
 			}
 		</div>

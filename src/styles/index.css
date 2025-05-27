@@ -57,6 +57,9 @@
 		--font-text: 'Inter';
 
 		--filter-code: brightness(0.85) contrast(2.2);
+
+		--ac-modal-background-color: var(--color-bg-alt);
+		--ac-modal-backdrop-filter: blur(5px);
 	}
 
 	:root[data-theme-dark] {
@@ -67,6 +70,9 @@
 		--color-font: var(--color-white);
 		--color-shadow: var(--color-dark-shadow);
 		--filter-code: none;
+
+		--ac-modal-background-color: var(--color-bg-alt);
+		--ac-modal-backdrop-filter: blur(5px);
 	}
 
 	html {

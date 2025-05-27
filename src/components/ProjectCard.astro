@@ -4,11 +4,12 @@ import Chip from 'src/components/Chip.astro';
 import Link from 'src/components/Link.astro';
 import { cn } from 'src/utils';
 import Carousel from './Carousel.astro';
+import ProjectModal from './ProjectModal.astro';
 
 type Props = {
 	index?: string;
 	projectTitle?: string;
-	role?: string;
+	description?: string;
 	chips?: string[];
 	images?: ImageMetadata[];
 	urls?: UrlButton[];
@@ -19,7 +20,14 @@ type UrlButton = {
 	url: string;
 };
 
-const { index = '00', projectTitle = '', chips = [], images, urls = [] } = Astro.props;
+const { index = '00', projectTitle = '', chips = [], images, urls = [], description = '' } = Astro.props;
+
+let chipsSplice = [''];
+
+if (chips.length >= 5) {
+	chipsSplice = chips.slice(0, 4);
+	chipsSplice.push(`+ ${chips.length - 4}`);
+} else chips;
 ---
 
 <div
@@ -45,7 +53,7 @@ const { index = '00', projectTitle = '', chips = [], images, urls = [] } = Astro
 			<span class="font-sans text-[16px] leading-[24px] lg:text-[20px] lg:leading-[32px]">{index}</span>
 		</div>
 		<div class="flex flex-wrap gap-2">
-			{chips.map(text => <Chip text={text} variant="outlined" />)}
+			{chipsSplice.map(text => <Chip text={text} variant="outlined" />)}
 		</div>
 	</div>
 	<div class="mt-3 flex flex-wrap mr-2 lg:mt-12">
@@ -57,4 +65,5 @@ const { index = '00', projectTitle = '', chips = [], images, urls = [] } = Astro
 			))
 		}
 	</div>
+	<ProjectModal projectTitle={projectTitle} chips={chips} urls={urls} description={description} />
 </div>

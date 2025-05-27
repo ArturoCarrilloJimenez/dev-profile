@@ -51,7 +51,7 @@ const dataEndFormat = formatDate(dateEnd);
 		{company && <p class="text-base font-medium text-muted mb-2">{company}</p>}
 
 		<!-- Descripción -->
-		{description && <p class="text-sm text-gray-400 leading-relaxed">{description}</p>}
+		{description && <p class="text-sm text-gray-400 leading-relaxed" set:html={description} />}
 
 		<div class="flex flex-wrap gap-2 mt-2">
 			{chips.map(text => <Chip text={text} variant="outlined" />)}

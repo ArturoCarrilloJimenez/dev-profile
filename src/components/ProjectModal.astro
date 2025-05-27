@@ -1,0 +1,61 @@
+---
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'free-astro-components';
+import Chip from './Chip.astro';
+import Link from './Link.astro';
+
+type Props = {
+	projectTitle?: string;
+	description?: string;
+	chips?: string[];
+	urls?: UrlButton[];
+};
+
+type UrlButton = {
+	name: string;
+	url: string;
+};
+
+const { projectTitle = 'Proyecto', chips = [], urls = [], description = '' } = Astro.props;
+---
+
+<!-- Disparador del modal -->
+<button
+	data-modal-trigger={projectTitle}
+	class="bg-secondary-alt font-sans uppercase text-sm leading-[22px] pt-3 pb-1.5 px-0 whitespace-nowrap lg:text-base"
+	>DETAILS</button
+>
+
+<!-- Modal con la clase custom-modal -->
+<Modal
+	id={projectTitle}
+	class="fixed inset-0 flex items-center justify-center text-primary p-4 rounded-xl shadow-xl"
+	aria-label={`Detalles del proyecto ${projectTitle}`}
+>
+	<ModalHeader class="border-b pb-2 mb-4">
+		<h3 class="text-xl font-semibold">{projectTitle}</h3>
+	</ModalHeader>
+
+	<ModalBody class="space-y-4">
+		{description && <p class="text-gray-400 leading-relaxed" set:html={description} />}
+
+		{
+			chips.length > 0 && (
+				<div class="flex flex-wrap gap-2">
+					{chips.map(chip => (
+						<Chip text={chip} variant="outlined" />
+					))}
+				</div>
+			)
+		}
+	</ModalBody>
+
+	<ModalFooter class="mt-3 flex flex-wrap mr-2 lg:mt-12">
+		{
+			urls.map(url => (
+				<Link href={url.url} target={url.name !== '#' ? '_blank' : undefined}>
+					{url.name}
+				</Link>
+			))
+		}
+	</ModalFooter>
+</Modal>
